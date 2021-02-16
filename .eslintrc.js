@@ -5,10 +5,18 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
   extends: [
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
   ],
   root: true,
   env: {
@@ -21,5 +29,23 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        pathGroups: [
+          {
+            pattern: '@src/**',
+            group: 'internal',
+          },
+        ],
+      },
+    ],
+    'sort-imports': [
+      'error',
+      {
+        allowSeparatedGroups: true,
+      },
+    ],
   },
 };
