@@ -15,7 +15,7 @@ enum Environment {
 }
 
 enum DBDriver {
-  PG = 'pg',
+  PG = 'postgres',
   MYSQL = 'mysql',
 }
 
